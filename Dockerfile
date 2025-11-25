@@ -1,5 +1,5 @@
-FROM btcpayserver/serverimage:v1.13.3
+FROM btcpayserver/serverimage:1.13.0
 WORKDIR /var/lib/docker/btcpayserver
-COPY docker-btcpay-entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/docker-btcpay-entrypoint.sh
-ENTRYPOINT ["/usr/bin/docker-btcpay-entrypoint.sh"]
+EXPOSE 49391
+ENTRYPOINT ["dotnet", "/app/BTCPayServer.dll"]
+CMD ["--urls", "http://*:49391"]
